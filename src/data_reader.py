@@ -1,0 +1,1 @@
+# Contains the logic for reading and parsing the RTF file and extracting JSON content
