@@ -9,21 +9,21 @@ from sklearn.neural_network import MLPClassifier
 
 
 
-RTF_FILE_PATH = "data\algoparams_from_ui1.json.rtf"
+RTF_FILE_PATH = "data/algoparams_from_ui1.json.rtf"
 
 
 model_dict = {
-    "RandomForestClassifier" : RandomForestClassifier(random_state=random_seed),
-    "RandomForestRegressor" : RandomForestRegressor(random_state=random_seed),
+    "RandomForestClassifier" : RandomForestClassifier(),
+    "RandomForestRegressor" : RandomForestRegressor(),
     "LinearRegression": LinearRegression(),
-    "LogisticRegression": LogisticRegression(random_state=random_seed),
+    "LogisticRegression": LogisticRegression(),
     "RidgeRegression": Ridge(),
     "LassoRegression": Lasso(),
     "ElasticNetRegression": ElasticNet(),
     "xg_boost": "ds",
-    "DecisionTreeRegressor": DecisionTreeRegressor(random_state=random_seed),
-    "DecisionTreeClassifier":DecisionTreeClassifier(random_state=random_seed),
-    "SVM": SVC(random_state=random_seed),
+    "DecisionTreeRegressor": DecisionTreeRegressor(),
+    "DecisionTreeClassifier":DecisionTreeClassifier(),
+    "SVM": SVC(),
     "KNN": KNeighborsClassifier(),
-    "neural_network": MLPClassifier(random_state=random_seed)    
+    "neural_network": MLPClassifier()    
 }
