@@ -19,6 +19,16 @@ def main():
     feature_handler = FeatureHandler(json_content)
     X_train, X_test, y_train, y_test = FeatureHandler.get_split_dataset(selected_features)    
 
+    X_train_transformed , X_test_transformed = feature_handler.transform_X_features(X_train, X_test, feature_details, target_variable)
+    y_train_transformed , y_test_transformed = feature_handler.transform_y_features(y_train, y_test, feature_details, target_variable)
+    
+    # Model building and hyperparameter tuning
+    model_trainer = ModelTrainer(json_content)
+    trained_model = model_trainer.build_and_tune_model(X_train, y_train, problem_type)
+    
+    # Save trained model
+    model_trainer.save_model(trained_model, 'results/models/trained_model.pkl')
+    
     
 
 if __name__ == '__main__':

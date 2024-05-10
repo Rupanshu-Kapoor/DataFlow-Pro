@@ -37,12 +37,22 @@ class DataReader:
         selected_features.remove(target_variable)
         return selected_features, feature_details
     
-
     
-    
-
     def get_problem_type_and_target_variable(self):
         design_state = self.json_content["design_state_data"]
         problem_type  = design_state["target"]["prediction_type"]
         target_variable = design_state["target"]["target"]
         return problem_type,target_variable
+    
+    def get_selected_models(self):
+        algorithms = self.json_content["design_state_data"]["algorithms"]
+        selected_algorithms = []
+        algo_hyperparameters = {}
+        for algo, details in algorithms.items():
+            if(details["is_selected"]):
+                selected_algorithms.append(algo)      
+                algo_hyperparameters[algo] = details["hyperparameters"]
+                algo_hyperparameters[algo].pop("model_name")
+                algo_hyperparameters[algo].pop("is_selected")
+
+        return selected_algorithms, algo_hyperparameters
