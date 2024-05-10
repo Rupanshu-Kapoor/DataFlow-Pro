@@ -2,7 +2,7 @@
 import pandas as pd
 import json
 from striprtf.striprtf import rtf_to_text
-from sklearn.preprocessing import train_test_split
+from sklearn.model_selection import train_test_split
 
 
 class DataReader:
