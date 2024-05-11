@@ -1,8 +1,8 @@
-from src.data_reader import DataReader
-from src.feature_handler import FeatureHandler
-from src.model_trainer import ModelTrainer
-from src.evaluator import Evaluator
-from src.config import * 
+from data_reader import DataReader
+from feature_handler import FeatureHandler
+from model_trainer import ModelTrainer
+from evaluator import Evaluator
+from config import * 
 
 def main():
     # Read the RTF file and parse the JSON content
@@ -17,17 +17,18 @@ def main():
 
     # Transform features
     feature_handler = FeatureHandler(json_content)
-    X_train, X_test, y_train, y_test = FeatureHandler.get_split_dataset(selected_features)    
+    X_train, X_test, y_train, y_test = feature_handler.get_split_dataset(selected_features)    
 
-    X_train_transformed , X_test_transformed = feature_handler.transform_X_features(X_train, X_test, feature_details, target_variable)
-    y_train_transformed , y_test_transformed = feature_handler.transform_y_features(y_train, y_test, feature_details, target_variable)
+    X_train_transformed , X_test_transformed = feature_handler.transform_X_features(X_train, X_test, feature_details)
+    y_train_transformed , y_test_transformed = feature_handler.transform_y_features(y_train, y_test, feature_details)
     
     # Model building and hyperparameter tuning
+    selected_models, model_parameters = data_reader.get_selected_models()
     model_trainer = ModelTrainer(json_content)
-    trained_model = model_trainer.build_and_tune_model(X_train, y_train, problem_type)
+    trained_model = model_trainer.build_and_tune_model(X_train_transformed, y_train_transformed, 
+                                                       problem_type, selected_models, model_parameters)
     
     # Save trained model
-    model_trainer.save_model(trained_model, 'results/models/trained_model.pkl')
     
     
 

@@ -51,8 +51,10 @@ class DataReader:
         for algo, details in algorithms.items():
             if(details["is_selected"]):
                 selected_algorithms.append(algo)      
-                algo_hyperparameters[algo] = details["hyperparameters"]
+                algo_hyperparameters[algo] = details
                 algo_hyperparameters[algo].pop("model_name")
                 algo_hyperparameters[algo].pop("is_selected")
 
         return selected_algorithms, algo_hyperparameters
+    
+    
