@@ -100,7 +100,7 @@ class FeatureHandler:
         train_ratio = train_info["train_ratio"]
         random_seed = train_info["random_seed"]
 
-        DATASET_PATH = "data/"+dataset
+        DATASET_PATH = "../data/"+dataset
         df = pd.read_csv(DATASET_PATH)
         X = df[selected_features]
         Y = df[target_variable]
