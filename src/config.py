@@ -4,8 +4,9 @@ from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.linear_model import SGDRegressor, LogisticRegression, Ridge, Lasso, ElasticNet
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from sklearn.svm import SVC, SVR
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
 from sklearn.neural_network import MLPClassifier
+from xgboost import XGBClassifier, XGBRegressor
 
 
 
@@ -20,11 +21,15 @@ model_dict = {
     "RidgeRegression": Ridge(),
     "LassoRegression": Lasso(),
     "ElasticNetRegression": ElasticNet(),
-    "xg_boost": "ds",
+    "XGBoostClassifier": XGBClassifier(),
+    "XGBoostRegressor": XGBRegressor(),
     "DecisionTreeRegressor": DecisionTreeRegressor(),
     "DecisionTreeClassifier":DecisionTreeClassifier(),
-    "SVM": SVC(),
-    "SVR": SVR(),
-    "KNN": KNeighborsClassifier(),
+    "SVMClassifier": SVC(),
+    "SVMRegressor": SVR(),
+    "KNNRegressor": KNeighborsRegressor(),
+    "KNNClassifier": KNeighborsClassifier(),
     "neural_network": MLPClassifier()    
 }
+
+
