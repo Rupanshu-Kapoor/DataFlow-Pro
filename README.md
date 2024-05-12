@@ -1,4 +1,5 @@
-# Automated ML
+# DataFlow Pro
+Automating ML Workflows with Ease
 
 ## Introduction
 The Automated ML is a Python application designed to automate the process of building, tuning, and evaluating machine learning 
