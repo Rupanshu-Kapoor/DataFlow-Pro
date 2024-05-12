@@ -22,8 +22,11 @@ To use the Automated ML Pipeline, follow these steps:
  Follow these steps to use the application:
 
  1. Place your RTF file containing JSON data in the `data/` directory.
- 2. Run the application by executing the `main.py` file: <br>
- `python app/main.py`
+ 2. Place your DATASET that need to be trained in `data/` directory.
+ 3. Change the directory to src: <br>
+    `cd src`
+ 4. Launch the application by executing the `app.py` file using: <br>
+ `streamlit run app.py`
 
 ## Working of the Application:
 The application performs the following tasks in sequence:
