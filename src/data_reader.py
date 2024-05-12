@@ -2,24 +2,33 @@
 import pandas as pd
 import json
 from striprtf.striprtf import rtf_to_text
-from sklearn.model_selection import train_test_split
-
+import streamlit as st
 
 class DataReader:
+    def __init__(self, rtf_file_path):
+        self.json_content = None
+        self.rtf_file_path = rtf_file_path
     def rtf_parser(self, file_path, encoding='utf-8'):
         # Read the RTF file
         with open(file_path, 'r', encoding=encoding) as file:
             rtf_content = file.read()
-        
+         
         # Convert the RTF content to text
         text_content = rtf_to_text(rtf_content)
         
         return text_content
     
 
-    def rtf_to_json_parser(self, rtf_file_path):
-        plain_text = self.rtf_parser(rtf_file_path)
-        json_data = json.loads(plain_text)
+    def rtf_to_json_parser(self):
+        # check for extension, if rtf convert to json
+        if self.rtf_file_path.split('.')[-1] == 'rtf':
+            plain_text = self.rtf_parser(self.rtf_file_path)
+            json_data = json.loads(plain_text)
+        elif self.rtf_file_path.split('.')[-1] == 'json' or self.rtf_file_path.split('.')[-1] == 'txt':
+            with open(self.rtf_file_path, 'r') as file:
+                json_data = json.load(file) 
+        else:
+            st.error("Invalid file type. Please upload a .rtf, .json or .txt file.")
         self.json_content = json_data
         return json_data
     
