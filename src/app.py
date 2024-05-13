@@ -332,7 +332,22 @@ def main():
         create_json_and_train()
     elif page == "Upload Json and train model":
         upload_json_and_train()
-
+    st.markdown("""
+    <style>
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000000;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+    <div class="footer">
+        <p>Made with ❤️ by Rupanshu Kapoor.</p>
+    </div>
+""", unsafe_allow_html=True)
     
 
 if __name__ == '__main__':
