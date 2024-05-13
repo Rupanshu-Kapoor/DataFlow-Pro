@@ -2,10 +2,8 @@
 Automating ML Workflows with Ease
 
 ## Introduction
-The Automated ML is a Python application designed to automate the process of building, tuning, and evaluating machine learning 
-models based on data provided in RTF format containing JSON metadata. <br>
-This application follows a structured flow to read the RTF file, extract dataset information, transform features, split data, 
-build and tune models, and evaluate their performance.
+The Automated ML is a Python application designed to automate the process of building, tuning, and evaluating machine learning models based on json provided in RTF/JSON?/TXT file format. <br>
+This application follows a structured flow to read the json file, extract dataset information, transform features, split data, build and tune models, and evaluate their performance.
 
 
 ## Installation
@@ -17,20 +15,34 @@ To use the Automated ML Pipeline, follow these steps:
 2. Install the required dependencies: <br>
    `pip install -r requirements.txt`
 
- ## Usage
- ### Step-by-Step Guide:
- Follow these steps to use the application:
+3. Run the application: <br>
+   `streamlit run app.py`
 
- 1. Place your RTF file containing JSON data in the `data/` directory.
- 2. Place your DATASET that need to be trained in `data/` directory.
- 3. Change the directory to src: <br>
-    `cd src`
- 4. Launch the application by executing the `app.py` file using: <br>
- `streamlit run app.py`
+ 
+ ## Steps to Use the Application:
+
+ You can use the application in following two ways:
+
+### (A). Create Json and Train Model
+
+1. Upload the dataset on the tool on which you want to train the different model.
+2. Once the data is uploaded, you can preview the dataset.
+3. Select prediction parameters (prediction type, target variable, k-fold, etc.). 
+4. Select features to be used for prediction.
+5. When you select any feature, you can choose how to handle it. (rescaling, encoding, etc.)
+6. Select the model to be used for prediction.
+7. When you select any model, you can choose hyperparameters for tuning.
+8. Once all the parameters are selected, click on `Generate Json and Train Model` button.
+9. Application will generate the json file and train the model and display the results.
+
+### (B). Upload Json and Train Model
+ 1. Upload the json file that contains all the dataset information.
+ 2. Click on Train Models.
+ 3. Application will train the model and display the results.
 
 ## Working of the Application:
 The application performs the following tasks in sequence:
-1. **Read the RTF File and Parse JSON Content**: The RTF file is read, converted to plain text, and JSON content is extracted.
+1. **Read the JSON File and Parse JSON Content**: The RTF/JSON file is read, converted to plain text, and JSON content is extracted.
 2. **Extract Dataset Information**: Extract dataset information such as feature names, target variable, problem type (regression/classification), feature handling, etc.
 3. **Transform Features**: Features are transformed based on the specified feature handling methods.
 4. **Sample Data and Train-Test Split**: Data is sampled and split into training and testing sets.
