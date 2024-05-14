@@ -7,6 +7,7 @@ from evaluator import Evaluator
 from config import * 
 import pandas as pd
 import json
+import os
 
 
 def extract_column_info(df):
@@ -103,8 +104,14 @@ def create_json_and_train():
     
     st.write("### Upload Dataset: ")
     uploaded_file = st.file_uploader("Upload Dataset CSV", type=['csv'])
+    # save uploaded file to ../data
+    
     
     if uploaded_file is not None:
+        uploaded_file_name = uploaded_file.name
+        uploaded_file_path = f"../data/{uploaded_file_name}"
+        with open(uploaded_file_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
         df = pd.read_csv(uploaded_file)
         st.write("### Sample Data:")
         st.write(df.head())
